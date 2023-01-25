@@ -5,6 +5,9 @@ const express = require('express')
 require('dotenv').config()
 const app = express()
 
+// PLACES
+app.use('/places', require('./controllers/places'))
+
 // ROUTES
 app.get('/', (req, res) => {
     res.send('Hello world!')
