@@ -2,6 +2,8 @@
 
 REST-Rant is an app where users can review restaurants.
 
+*Places should have a _id (object ID), name (string), city (string), state (string), cuisines (string) and a pic (string)*
+
 **Routes to follow:**
 
 GET   /places   Places index page
