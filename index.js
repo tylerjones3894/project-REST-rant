@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 
 // 404 PAGE
 app.get('*', (req, res) => {
-    res.status(404).send('<h1>404 Page</h1>')
+    res.status(404).render('error404')
 })
 
 // LISTEN
