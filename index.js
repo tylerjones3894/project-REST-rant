@@ -8,6 +8,7 @@ const app = express()
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
 app.use(express.static('public'))
+app.use(express.urlencoded({extended: true}))
 
 // ROUTES
 app.get('/', (req, res) => {
@@ -15,7 +16,7 @@ app.get('/', (req, res) => {
 })
 
 // PLACES
-app.use('/places', require('./controllers/places.js'))
+app.use('/places', require('./controllers/places_controller.js'))
 
 // 404 PAGE
 app.get('*', (req, res) => {
