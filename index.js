@@ -1,10 +1,12 @@
 // DEPENDENCIES
 const express = require('express')
+const methodOverride = require('method-override')
+const mongoose = require('mongoose')
 
 // CONFIGURATION
 require('dotenv').config()
+const PORT = process.env.PORT
 const app = express()
-const methodOverride = require('method-override')
 
 // Express Settings
 app.set('views', __dirname + '/views')
@@ -26,6 +28,13 @@ app.use('/places', require('./controllers/places.js'))
 app.get('*', (req, res) => {
     res.status(404).render('error404')
 })
+
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true
+  })
+
+module.exports.Place = require('./places')
 
 // LISTEN
 app.listen(process.env.PORT)
