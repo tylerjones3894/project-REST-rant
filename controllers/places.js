@@ -36,18 +36,26 @@ router.get('/:id', (req, res) => {
   }
 })
 
-router.delete('/:id', (req, res) => {
+// GET /places/edit
+router.get('/:id/edit', (req, res) => {
   let id = Number(req.params.id)
   if (isNaN(id)) {
-    res.render('error404')
+      res.render('error404')
   }
   else if (!places[id]) {
-    res.render('error404')
+      res.render('error404')
   }
   else {
-    places.splice(id, 1)
-    res.redirect('/places')
+    res.render('places/edit', { place: places[id] })
   }
+})
+
+// DELETE
+router.delete('/:id', (req, res) => {
+  db.Place.findByIdAndDelete(req.params.id)
+    .then(() => {
+      res.status(303).redirect('/places')
+    })
 })
 
 // GET /places
