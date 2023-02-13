@@ -29,12 +29,5 @@ app.get('*', (req, res) => {
     res.status(404).render('error404')
 })
 
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true, 
-    useUnifiedTopology: true
-  })
-
-module.exports.Place = require('./places')
-
 // LISTEN
 app.listen(process.env.PORT)
